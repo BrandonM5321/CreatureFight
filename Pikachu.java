@@ -10,9 +10,26 @@ public class Pikachu extends Creature
 { 
     public Pikachu( World w )
     {
-        super(700, 2);
+        super(700,false, "Electric");
         getImage().scale(150, 100);
         w.addObject( getHealthBar(), 100, 25 );
+    }
+    
+    public void attack ( int idx )
+    {
+        CreatureWorld world = ( CreatureWorld)getWorld();
+        Creature enemy = world.getPlayerOne();
+        String enemyType = enemy.getType();
+        
+        if (idx == 0 )
+        {
+            enemy.getHealthBar().add( -30 );
+        }
+        else
+        {
+            enemy.getHealthBar().add( -65 );
+        }
+        world.setTurnNumber(false);
     }
     
     /**

@@ -9,8 +9,9 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class Creature extends Actor
 {
     private int healthNumber;
-    private int playerOwnership;
+    private boolean playerOneCreature;
     private HealthBar creatureBar;
+    private String type;
     
     /**
      * Default constructor for objects of the Creature class
@@ -21,9 +22,10 @@ public class Creature extends Actor
     public Creature()
     {
         healthNumber = 500;
-        playerOwnership = 0; 
+         
         creatureBar = new HealthBar(healthNumber, healthNumber, 10);
     }
+    
 
     /**
      * Constructor that allows customization of objects of the Creature class
@@ -32,11 +34,12 @@ public class Creature extends Actor
      * @param whichPlayer discusses whether the creature belongs to player 1 or player 2
      * @return an object of the Creature class
      */
-    public Creature( int health, int whichPlayer )
+    public Creature( int health, boolean isPlayerOne, String creatureType )
     {
         healthNumber = health;
-        playerOwnership = whichPlayer;
+        playerOneCreature = isPlayerOne;
         creatureBar = new HealthBar ( healthNumber, healthNumber, 10);
+        type = creatureType;
     }
     
     protected HealthBar getHealthBar()
@@ -44,9 +47,9 @@ public class Creature extends Actor
         return creatureBar;
     }
     
-    public int getPlayerOwnership()
+    public boolean getWhetherPlayerOne()
     {
-        return playerOwnership;
+        return playerOneCreature;
     }
    
     /**
@@ -55,9 +58,14 @@ public class Creature extends Actor
      * @param There are no parameters
      * @return Nothing is returned
      */
-    public void attack()
+    public void attack( int idx )
     {
         //empty method that will get overriden in subclasses
+    }
+    
+    public String getType()
+    {
+        return type;
     }
 
     /**
