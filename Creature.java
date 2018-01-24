@@ -22,7 +22,7 @@ public class Creature extends Actor
     public Creature()
     {
         healthNumber = 500;
-         
+        playerOneCreature = true;
         creatureBar = new HealthBar(healthNumber, healthNumber, 10);
     }
     
@@ -42,11 +42,23 @@ public class Creature extends Actor
         type = creatureType;
     }
     
+    /**
+     * HealthBar is the code that get the creatrues healthbar 
+     * 
+     * @param There are no perameters
+     * @return Returns the creatures healthbar
+     */
     protected HealthBar getHealthBar()
     {
         return creatureBar;
     }
     
+    /**
+     * HealthBar is the code that check whether its player one
+     * 
+     * @param There are no perameters
+     * @return Returns playeronecreature
+     */
     public boolean getWhetherPlayerOne()
     {
         return playerOneCreature;
@@ -63,6 +75,34 @@ public class Creature extends Actor
         //empty method that will get overriden in subclasses
     }
     
+    /**
+     * attack is the code that is run when the Creature attacks its enemy
+     * 
+     * @param There are no parameters
+     * @return Nothing is returned
+     */
+    public void switchCreature( int idx )
+    {
+        //empty method that will get overriden in subclasses
+    }
+    
+    /**
+     * attack is the code that is run when the Creature attacks its enemy
+     * 
+     * @param There are no parameters
+     * @return Nothing is returned
+     */
+    public void switchedIn()
+    {
+        //empty method that will get overriden in subclasses.
+    }
+    
+    /**
+     * type is the code that allows you to type 
+     * 
+     * @param There are no parameters
+     * @returns type
+     */
     public String getType()
     {
         return type;
@@ -78,6 +118,5 @@ public class Creature extends Actor
     public void act() 
     {
         //empty method that will get overriden in subclasses
-    }   
-
+    }
 }

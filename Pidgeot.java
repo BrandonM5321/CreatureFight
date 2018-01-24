@@ -6,13 +6,14 @@ import javax.swing.JOptionPane;
  * @author (Brandan Michelle) 
  * @version (a version number or a date)
  */
-public class Pikachu extends Creature
+public class Pidgeot extends Creature
 { 
-    public Pikachu( World w )
+    public Pidgeot( World w )
     {
-        super(700,false, "Electric");
+        super(800,false, "Flying");
         getImage().scale(150, 100);
         w.addObject( getHealthBar(), 100, 25 );
+        getHealthBar().getImage().setTransparency(0);
     }
     
     /**
@@ -35,19 +36,19 @@ public class Pikachu extends Creature
         {
             if( enemyType.equalsIgnoreCase ("Rock") )
             {
-                enemy.getHealthBar().add( -65/2 );
-                getWorld().showText("It's Not Very Effective...", getWorld().getWidth()/2, getWorld().getHeight()/2 + 26);
+                enemy.getHealthBar().add( -55/2 );
+                getWorld().showText("It's not Very Effective...", getWorld().getWidth()/2, getWorld().getHeight()/2 + 26);
                 Greenfoot.delay(30);
             }
             else if( enemyType.equalsIgnoreCase ("Grass") )
             {
-                enemy.getHealthBar().add( -65/2 );
-                getWorld().showText("It's Not Very Effective...", getWorld().getWidth()/2, getWorld().getHeight()/2 + 26);
+                enemy.getHealthBar().add( -55*2 );
+                getWorld().showText("It's Super Effective...", getWorld().getWidth()/2, getWorld().getHeight()/2 + 26);
                 Greenfoot.delay(30);
             }
             else
             {
-                enemy.getHealthBar().add( -65 );
+                enemy.getHealthBar().add( -55 );
             }
         }
         
@@ -56,9 +57,9 @@ public class Pikachu extends Creature
     }
     
     /**
-     * void switchCreature is the code that switchs your creature to another
+     * void attackanimation is the code that make the creature move
      * 
-     * @param int idx
+     * @param There are no parameters
      * @return Nothing is returned
      */
     private void attackAnimation()
@@ -76,9 +77,9 @@ public class Pikachu extends Creature
     }
     
     /**
-     * void switchCreature is the code that switchs you creature to another
+     * void switchCreature is the code that switchs your creature to another
      * 
-     * @param There are no parameters
+     * @param int idx
      * @return Nothing is returned
      */
     public void switchCreature( int idx )
@@ -87,11 +88,11 @@ public class Pikachu extends Creature
         Creature switchCreature;
         if ( idx == 0 )
         {
-            switchCreature = world.getNewTwoCreature(1);
+            switchCreature = world.getNewTwoCreature(0);
         }
         else 
         {
-            switchCreature = world.getNewTwoCreature(2);
+            switchCreature = world.getNewTwoCreature(1);
         }
         
         if ( switchCreature.getHealthBar().getCurrent() <= 0 )
@@ -109,16 +110,15 @@ public class Pikachu extends Creature
             getHealthBar().getImage().setTransparency(0);
             if( idx == 0 )
             {
-                world.changePlayerTwo("Lapras");
+                world.changePlayerTwo("Pikachu");
             }
             else
             {
-                world.changePlayerTwo("Pidgeot");
+                world.changePlayerTwo("Lapras");
             }
             switchCreature.switchedIn();
             world.setTurnNumber(true);
         }
-        
         
     }
     
@@ -150,15 +150,15 @@ public class Pikachu extends Creature
         
         if( getHealthBar().getCurrent() <= 0)
         {
-           getWorld().showText("Pikachu has fainted...", getWorld().getWidth()/2, getWorld().getHeight()/2 + 26);
+           getWorld().showText("Pidgeot has fainted...", getWorld().getWidth()/2, getWorld().getHeight()/2 + 26);
            Greenfoot.delay(30);
-           if( playerWorld.getNewTwoCreature(1).getHealthBar().getCurrent() > 0 )
+           if( playerWorld.getNewTwoCreature(0).getHealthBar().getCurrent() > 0 )
            {
                switchCreature(0);
                playerWorld.setTurnNumber(false);
                getWorld().showText("",getWorld().getWidth()/2, getWorld().getHeight()/2 + 26);
            }
-           else if( playerWorld.getNewTwoCreature(2).getHealthBar().getCurrent() > 0 )
+           else if( playerWorld.getNewTwoCreature(1).getHealthBar().getCurrent() > 0 )
            {
                switchCreature(1);
                playerWorld.setTurnNumber(false);

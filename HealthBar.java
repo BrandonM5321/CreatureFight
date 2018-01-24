@@ -21,7 +21,7 @@ public class HealthBar extends Actor
     private Color warning;
     private Color danger;
 
-    //Need to add code her
+    //Need to add code here
     private int max;
     private int current;
     private int speed;

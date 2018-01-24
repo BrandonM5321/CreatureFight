@@ -28,6 +28,12 @@ public class TextBox extends Actor
         display();
     }
     
+    /**
+     * void displays the color
+     * 
+     * @param There are no parameters
+     * @return Nothing is returned
+     */
     private void display()
     {
         if( border == true )
@@ -39,11 +45,23 @@ public class TextBox extends Actor
         setImage( img );
     }
     
-    public String getText()
+    /**
+     * String getText displays the text on the screen
+     * 
+     * @param There are no parameters
+     * @return returns text
+     */
+    public String getText( )
     {
         return text;
     }
     
+    /**
+     * void setText displays the text on the screen
+     * 
+     * @param There are no parameters
+     * @return Nothing is returned
+     */
     public void setText( String message )
     {
         text = message;
